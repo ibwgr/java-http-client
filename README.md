@@ -19,4 +19,5 @@ $ java -cp target/*dependencies.jar HttpClient http://wttr.in
 ```
 
 Eigentlich wollen wir nicht den HTML Quelltext, sondern, den ASCII Output den wir auch mit curl bekommen.
-Das erreichen wir, indem wir den HTTP Request Header "User-Agent" auf "curl" setzen.
+Das erreichen wir, indem wir den HTTP Request Header "User-Agent" auf "curl" setzen. Der Server erkennt
+den Request Header und reagiert entsprechend.

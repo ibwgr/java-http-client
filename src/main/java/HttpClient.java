@@ -19,17 +19,15 @@ public class HttpClient {
     public static void main(String[] args) throws IOException {
         String url = args[0];
         HttpGet getRequest = new HttpGet(url);
+        // Via HttpGet können wir den user-agent Request Header verändern.
+        // Der Server erkennt den Header und kann entsprechend die Antwort anpassen.
         getRequest.setHeader(HttpHeaders.USER_AGENT, "curl");
         CloseableHttpClient client = HttpClients.createDefault();
-        CloseableHttpResponse response = null;
 
-        try {
-            response = client.execute(getRequest);
+        try (CloseableHttpResponse response = client.execute(getRequest)) {
             HttpEntity entity = response.getEntity();
             String content = EntityUtils.toString(entity);
             System.out.println(content);
-        } finally {
-            if(response != null) response.close();
         }
     }
 }
